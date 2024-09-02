@@ -23,7 +23,7 @@ public class Main {
 		
 		//txt menu
 		char choice = 'q';
-		char dewit;
+
 		
 		do {
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
