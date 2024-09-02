@@ -23,13 +23,18 @@ public class Main {
 		
 		//txt menu
 		char choice = 'q';
+		char dewit;
 		
 		do {
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			System.out.println("Welcome to SICKO! Ready to do some CRUD?");
 			System.out.println("Please type a letter to make a selection: ");
-			System.out.println("T: Test something O_O\nS: Search\nU: Update a product Qty, Name, or Description\nC: Create a new product\nV: View all products\nD: Delete a product\nQ: Quit");
+			System.out.println("T: Test something O_O\nS: Search\nU: Update a product Qty, Name, or Description\nL: Check low stock/see shopping list\nC: Create a new product\nV: View all products\nD: Delete a product\nQ: Quit");
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			
+			LowStockAlert lsa = new LowStockAlert();
+			lsa.LSA();
+			
 			
 			Scanner input = new Scanner(System.in);
 			choice = input.next().charAt(0);
@@ -47,9 +52,14 @@ public class Main {
 				search.FindProduct();
 			}
 			else if(choice == 'u' || choice == 'U') {
-				System.out.println("Alrighty, lets update that product!\n");
+				System.out.println("Alrighty, lets update that product!");
 				Update update = new Update();
 				update.UpdateProduct();
+			}
+			else if(choice == 'l' || choice == 'L') {
+				System.out.println("WHEEEEEEEEEEEEEEEEEEEEEE");
+				LowStockList lowstock = new LowStockList();
+				lowstock.LowStock();
 			}
 			else if(choice == 'c' || choice == 'C') {
 				System.out.println("Time to create a new product entry!");
