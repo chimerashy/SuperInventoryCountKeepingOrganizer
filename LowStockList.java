@@ -12,6 +12,8 @@ public class LowStockList {
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
 	public char dewit;
+	String user = null;
+	String pass = null;
 	
 	public void LowStock() {
 		Scanner input = new Scanner(System.in);
@@ -29,11 +31,11 @@ public class LowStockList {
 		try {
 			//connect to db
 			System.out.println("Checking the DB\n...");
-			DB db = DB.getConnector("root", "Burnkeyblueberrycrumble1515@");
+			DB db = DB.getConnector(user, pass);
 			Connection connect = db.getConnection();
 			//statement to read from the db later
 			st = connect.createStatement();
-			rs = st.executeQuery("select * from hardwareStore where QUANTITY <= 100");
+			rs = st.executeQuery("select * from hardwareStore where QUANTITY < 100");
 			
 			while(rs.next()) {
 				String product_name = rs.getString("PRODUCT_NAME");
@@ -54,11 +56,11 @@ public class LowStockList {
 		try {
 			//connect to db
 			System.out.println("Checking the DB\n...");
-			DB db = DB.getConnector("root", "Burnkeyblueberrycrumble1515@");
+			DB db = DB.getConnector(user, pass);
 			Connection connect = db.getConnection();
 			//statement to read from the db later
 			st = connect.createStatement();
-			rs = st.executeQuery("select * from hardwareStore where QUANTITY <= 100");
+			rs = st.executeQuery("select * from hardwareStore where QUANTITY < 100");
 			
 			while(rs.next()) {
 				String product_name = rs.getString("PRODUCT_NAME");

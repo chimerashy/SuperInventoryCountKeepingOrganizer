@@ -11,17 +11,19 @@ public class LowStockAlert {
 	private Statement st = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
+	String user = null;
+	String pass = null;
 	public int i = 0;
 	
 	public void LSA() {
 		try {
 			//connect to db
-			DB db = DB.getConnector("root", "Burnkeyblueberrycrumble1515@");
+			DB db = DB.getConnector(user, pass);
 			Connection connect = db.getConnection();
 			
 			//statement to read from the db later
 			st = connect.createStatement();
-			rs = st.executeQuery("select * from hardwareStore where QUANTITY <= 100");
+			rs = st.executeQuery("select * from hardwareStore where QUANTITY < 100");
 			
 			while(rs.next()) {
 				i++;

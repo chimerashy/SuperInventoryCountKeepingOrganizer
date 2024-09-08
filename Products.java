@@ -12,12 +12,14 @@ public class Products {
 	private Statement st = null;
 	private PreparedStatement ps = null;
 	private ResultSet rs = null;
+	String user = null;
+	String pass = null;
 	
 	public void GetAllProds() {
 		try {
 			//connect to db
 			System.out.println("Connecting to DB\n...");
-			DB db = DB.getConnector("root", "Burnkeyblueberrycrumble1515@");
+			DB db = DB.getConnector(user, pass);
 			Connection connect = db.getConnection();
 			//statement to read from the db later
 			st = connect.createStatement();
