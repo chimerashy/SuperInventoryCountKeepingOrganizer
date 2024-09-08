@@ -14,6 +14,8 @@ public class Update {
 	String updt_qty = null;
 	String updt_name = null;
 	String updt_desc = null;
+	String user = null;
+	String pass = null;
 	char action = 'x';
 	int i = 1;
 	
@@ -22,7 +24,7 @@ public class Update {
 		updater:
 		do {
 		//connect to db
-		DB db = DB.getConnector("root", "Burnkeyblueberrycrumble1515@");
+		DB db = DB.getConnector(user, pass);
 		Connection connect = db.getConnection();
 		st = connect.createStatement();
 		

@@ -16,6 +16,7 @@ public class Login {
 		user = input.nextLine();
 		System.out.println("Enter your password: ");
 		password = input.nextLine();
+		setLogin(user, password);
 	}
 	
 	public void setLogin(String user, String password){

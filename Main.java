@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		/* Commented out to make testing easier 
+		//Commented out to make testing easier 
 		
-		//enforce loggin in
+		//enforce logging in
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("Please log in to continue :)");
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -19,37 +19,39 @@ public class Main {
 		//connect to db with provided info
 		DB db = DB.getConnector(login.getUser(), login.getPassword());	
 
-		*/
 		
 		//txt menu
 		char choice = 'q';
+
 		
 		do {
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			System.out.println("Welcome to SICKO! Ready to do some CRUD?");
 			System.out.println("Please type a letter to make a selection: ");
-			System.out.println("T: Test something O_O\nS: Search\nU: Update a product Qty, Name, or Description\nC: Create a new product\nV: View all products\nD: Delete a product\nQ: Quit");
+			System.out.println("S: Search\nU: Update a product Qty, Name, or Description\nL: Check low stock/see shopping list\nC: Create a new product\nV: View all products\nD: Delete a product\nQ: Quit");
 			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			
+			LowStockAlert lsa = new LowStockAlert();
+			lsa.LSA();
+			
 			
 			Scanner input = new Scanner(System.in);
 			choice = input.next().charAt(0);
 			
-			if(choice == 't' || choice == 'T') {
-				System.out.println("You got it, boss!\nTest commencing!\n...");
-				Test test = new Test();
-				test.TestWrite();
-				System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n...");
-				System.out.println("Test completed! Did we win??");
-				}
-			else if(choice == 's' || choice == 'S') {
+			if(choice == 's' || choice == 'S') {
 				System.out.println("Okie dokie!");
 				Search search = new Search();
 				search.FindProduct();
 			}
 			else if(choice == 'u' || choice == 'U') {
-				System.out.println("Alrighty, lets update that product!\n");
+				System.out.println("Alrighty, lets update that product!");
 				Update update = new Update();
 				update.UpdateProduct();
+			}
+			else if(choice == 'l' || choice == 'L') {
+				System.out.println("WHEEEEEEEEEEEEEEEEEEEEEE");
+				LowStockList lowstock = new LowStockList();
+				lowstock.LowStock();
 			}
 			else if(choice == 'c' || choice == 'C') {
 				System.out.println("Time to create a new product entry!");

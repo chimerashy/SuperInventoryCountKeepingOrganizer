@@ -15,6 +15,8 @@ public class Delete {
 	String updt_name = null;
 	String updt_desc = null;
 	String action = null;
+	String user = null;
+	String pass = null;
 	String delete = "DELETE";
 	int i = 1;
 	
@@ -23,7 +25,7 @@ public class Delete {
 		updater:
 		do {
 		//connect to db
-		DB db = DB.getConnector("root", "Burnkeyblueberrycrumble1515@");
+		DB db = DB.getConnector(user, pass);
 		Connection connect = db.getConnection();
 		st = connect.createStatement();
 		
